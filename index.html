@@ -50,6 +50,7 @@
     <style>
         body {
             background-color: white;
+            margin: 0px;
         }
 
         h1 {
@@ -96,7 +97,7 @@
 
         #leftPanel {
             float: left;
-            width: 400px;
+            width: 300px;
             height: 100%;
             margin-top: 50px;
         }
@@ -110,31 +111,52 @@
             align-content: center;
         }
 
-        div.button {
+        ul.button {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            font-size: large;
+            align-items: center;
+            height: fit-content;
+
+
+            /* overflow: hidden;
+            list-style-type: none;
             color: lightgray;
-            background-color: grey;
-            border-radius: 7px;
-            padding-left: 10px;
-            padding-right: 10px;
-            margin-left: 10px;
+            margin: 0;
+            padding: 0;
             font-family: 'Roboto', sans-serif;
             font-weight: 400;
-            font-size: x-large;
+            margin-left: 0px;
+            margin-right: 0px;
+            align-items: center;
             width: fit-content;
-            transition: background-color 0.3s, color 0.3s;
-
-            transition-timing-function: ease-out;
             cursor: pointer;
-            display: inline-block;
-
+            display: inline-block; */
         }
 
-        div.button:hover {
+        li.button {
+            float: left;
+        }
+
+        li.button {
+            display: block;
+            color: lightgrey;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            transition-timing-function: ease-out;
+        }
+
+        li.button:hover {
             color: white;
-            background-color: darkgrey;
-            border-radius: 7px;
-            width: fit-content;
-            padding-right: 10px;
+            background-color: grey;
+            cursor: pointer;
         }
 
         #AboutMe {
@@ -164,294 +186,307 @@
 </head>
 
 <body>
-    <div style="width: 1400px;">
-        <div id="leftPanel">
-            <img class="avatar" src="resources/moi.png ">
-            <div style="margin-left: 90px;">
-                <p style=" color: black;
+    <div style="height: fit-content; background-color:lightslategrey">
+        <ul class="button">
+            <li class="button" onclick="buttonAction('AboutMe');">
+                About Me
+            </li>
+            <li class="button" onclick="buttonAction('PersonalProjects');">
+                Personal Projects
+            </li>
+            <li class="button" onclick="buttonAction('SideProjects');">
+                Side Experiments
+            </li>
+            <li class="button" onclick="buttonAction('Resume');">
+                Resume
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div style="width: 1400px;">
+            <div id="leftPanel">
+                <img class="avatar" src="resources/moi.png ">
+                <div style="margin-left: 45px;">
+                    <p style=" color: black;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 900;
                 font-size: xx-large;
                 text-align: left;
                 margin-bottom: 1px;"> Guyot Cédric
-                </p>
-                <p style=" color: grey;font-family: 'Roboto', sans-serif;
+                    </p>
+                    <p style=" color: grey;font-family: 'Roboto', sans-serif;
                 font-weight: 900;
                 font-size: x-large;
                 margin-bottom: 1px;
                 text-align: left;
                 margin-top: 1px;"> ProfesseurPoire</p>
-                <p style=" color: darkgrey;font-family: 'Roboto', sans-serif;
+                    <p style=" color: darkgrey;font-family: 'Roboto', sans-serif;
                 font-weight: 900;
                 font-size: large;
                 margin-top: 1px;
                 text-align: left;"> C++ and Game Developer</p>
-            </div>
-
-        </div>
-
-        <div id="contentPanel">
-            <div id="toolbar">
-                <div class="button" onclick="buttonAction('AboutMe');">
-                    About Me
-                </div>
-                <div class="button" onclick="buttonAction('PersonalProjects');">
-                    Personal Projects
-                </div>
-                <div class="button" onclick="buttonAction('SideProjects');">
-                    Side Experiments
-                </div>
-                <div class="button" onclick="buttonAction('Resume');">
-                    Resume
                 </div>
             </div>
-            <hr />
 
 
-            <div class="Sections" id="PersonalProjects">
-                <div style="height:270px ;">
-                    <div>
-                        <img style="margin-left:50px;float:right;" width="450" class="previewImage"
-                            src="resources/FrogKnight.png ">
+            <div id="contentPanel">
+                <div class="Sections" id="PersonalProjects">
+                    <div style="height:270px ;">
                         <div>
-                            <h2> FrogKnight </h2>
-                            <p>
-                                Frogknight is a colorful action-adventure game still in development in which you play an
-                                adorable frog that must free the kingdom from a terrible curse.
+                            <img style="margin-left:50px;float:right;" width="450" class="previewImage"
+                                src="resources/FrogKnight.png ">
+                            <div>
+                                <h2> FrogKnight </h2>
+                                <p>
+                                    Frogknight is a colorful action-adventure game still in development in which you
+                                    play an
+                                    adorable frog that must free the kingdom from a terrible curse.
+                                </p>
+                                <p>
+                                    The game is being built on top of my own game engine (Corgi Engine) and will feature
+                                    a whole world for the player to explore, filled with dungeons, treasures and
+                                    colorful
+                                    characters to interact with!
+                                </p>
+                                <p>
+                                    You can click on the miniatures to open gifs!
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <a href="resources/tw.gif" target="_blank" title="MovingAround" description="suff">
+                            <img width="150px" height="150px" src="resources/previewTw.jpeg">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/tttttttt.gif" target="_blank" title="EnemyAttack"
+                            description="suff">
+                            <img width="150px" height="150px" src="resources/previewt.jpeg">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/clouds.gif" target="_blank" title="Clouds"
+                            description="suff">
+                            <img width="150px" height="150px" src="resources/previewClouds.png">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/Butterflies2.gif" target="_blank"
+                            title="Butterflies" description="suff">
+                            <img width="150px" height="150px" src="resources/previewButterflies.png">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/Jump.gif" target="_blank" title="Jump"
+                            description="suff">
+                            <img width="150px" height="150px" src="resources/previewJump.png">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/stuff.gif" target="_blank" title="Reflect"
+                            description="suff">
+                            <img width="150px" height="150px" src="resources/previewReflect.png">
+                        </a>
+                    </div>
+                    <hr />
+                    <div style="height: 300px;">
+                        <img style="float:left; margin-right: 50px;" class="previewImage"
+                            src="resources/gameEngine.png ">
+                        <div>
+                            <h2> Corgi Game Engine </h2>
+                            <p> Corgi is a C++/OpenGL game engine I'm currently working on to build my other projects.
+                                It
+                                focuses on 2D features but still support 3D operations or meshes.
                             </p>
                             <p>
-                                The game is being built on top of my own game engine (Corgi Engine) and will feature
-                                a whole world for the player to explore, filled with dungeons, treasures and colorful
-                                characters to interact with!
+                                You can find the source code on my github <a
+                                    href="https://github.com/ProfesseurPoire/corgi">repository</a>
                             </p>
+                            <p>
+                                Features :
+                            </p>
+                            <ul>
+                                <li>
+                                    2D Support (Sprite Animation, Tilemapping, Sorting etc)
+                                </li>
+                                <li>
+                                    Basics Physics (2D collisions detection)
+                                </li>
+                                <li>
+                                    UI System (Fonts, Widgets)
+                                </li>
+                                <li>
+                                    CrossPlatform (Linux/Windows/MacOS)
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <hr />
+                    <div>
+                        <img width="450" style="margin-left:50px;float:right" class="previewImage"
+                            src="resources/Editor.png ">
+                        <div>
+                            <h2> FrogKnight Game Editor </h3>
+                                <p>
+                                    I'm working on a game editor to make it easier to create levels for my game
+                                    FrogKnight.
+                                    The Editor is made using C++ and the GUI features of my engine (corgi engine).
+                                </p>
+                                <p>
+                                    So far, the Editor allow tilemapping edition and the ability to run the game while
+                                    editing the level in real time
+                                </p>
                         </div>
                     </div>
 
                 </div>
-                <div>
-                    <a href="resources/tw.gif" target="_blank" title="MovingAround" description="suff">
-                        <img width="150px" height="150px" src="resources/previewTw.jpeg">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/tttttttt.gif" target="_blank" title="EnemyAttack"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewt.jpeg">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/clouds.gif" target="_blank" title="Clouds"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewClouds.png">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/Butterflies2.gif" target="_blank" title="Butterflies"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewButterflies.png">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/Jump.gif" target="_blank" title="Jump"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewJump.png">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/stuff.gif" target="_blank" title="Reflect"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewReflect.png">
-                    </a>
-                </div>
-                <hr />
-                <div style="height: 300px;">
-                    <img style="float:left; margin-right: 50px;" class="previewImage" src="resources/gameEngine.png ">
-                    <div>
-                        <h2> Corgi Game Engine </h2>
-                        <p> Corgi is a C++/OpenGL game engine I'm currently working on to build my other projects. It
-                            focuses on 2D features but still support 3D operations or meshes.
-                        </p>
-                        <p>
-                            You can find the source code on my github <a
-                                href="https://github.com/ProfesseurPoire/corgi">repository</a>
-                        </p>
-                        <p>
-                            Features :
-                        </p>
-                        <ul>
-                            <li>
-                                2D Support (Sprite Animation, Tilemapping, Sorting etc)
-                            </li>
-                            <li>
-                                Basics Physics (2D collisions detection)
-                            </li>
-                            <li>
-                                UI System (Fonts, Widgets)
-                            </li>
-                            <li>
-                                CrossPlatform (Linux/Windows/MacOS)
-                            </li>
-                        </ul>
 
-                    </div>
-                </div>
-                <hr />
-                <div>
-                    <img width="450" style="margin-left:50px;float:right" class="previewImage"
-                        src="resources/Editor.png ">
-                    <div>
-                        <h2> FrogKnight Game Editor </h3>
+                <div class="Sections" id="SideProjects">
+
+                    <div style="height:210px ;">
+                        <iframe style="margin-left:50px;float:right" width="auto" height="200"
+                            src="https://www.youtube.com/embed/WLz-BpkRlfo"></iframe>
+                        <div>
+                            <h2>
+                                Real Time Shadow mapping
+                            </h2>
                             <p>
-                                I'm working on a game editor to make it easier to create levels for my game FrogKnight.
-                                The Editor is made using C++ and the GUI features of my engine (corgi engine).
+                                Implementing shadow mapping
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div style="height:210px ;">
+                        <iframe style="margin-right:50px;float:left" width="auto" height="200"
+                            src="https://www.youtube.com/embed/u8t_ahQPCMA"></iframe>
+                        <div>
+                            <h2>
+                                Dynamic Environment Cubemap
+                            </h2>
+                            <p>
+                                Implementing Dynamic Environment cubemap.
                             </p>
                             <p>
-                                So far, the Editor allow tilemapping edition and the ability to run the game while
-                                editing the level in real time
+                                We render the scene 6 times for each side of the cube, put this inside an array of 6
+                                texture (TextureCube) and send it to the shaders.
                             </p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div style="height:210px ;">
+                        <iframe style="margin-left:50px;float:right" width="auto" height="200"
+                            src="https://www.youtube.com/embed/KhYXsFNvR8I"></iframe>
+                        <div>
+                            <h2>
+                                Incremental Delaunay Triangulation
+                            </h2>
+                            <p>
+                                Implementation of the Incremental Delaunay Triangulation algorithm and Voronoi Diagram
+                            </p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div style="height:210px ;">
+                        <iframe style="margin-right:50px;float:left" width="auto" height="200"
+                            src="https://www.youtube.com/embed/JeRfxWaMpJE"></iframe>
+                        <div>
+                            <h2>
+                                Basic L-System Integration
+                            </h2>
+                            <p>
+                                Turtle rules :
+                                F and G mean draw a segment
+                                + : turn left
+                                - : turn right
+                                [ save position and angle
+                                ] return to the last saved position and angle
+                                X and Y just control the formula but have no effect on the drawing.
+                            </p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div style="height:210px ;">
+                        <iframe style="margin-left:50px;float:right" width="auto" height="200"
+                            src="https://www.youtube.com/embed/ndyQcM1X9Sw"></iframe>
+                        <div>
+                            <h2>
+                                Particle System
+                            </h2>
+                            <p>
+                                1 million moving particles in C++/Opengl
+                            </p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div style="height:210px ;">
+                        <iframe style="margin-right:50px;float:left" width="auto" height="200"
+                            src="https://www.youtube.com/embed/Ir-vvTKv8Gw"></iframe>
+                        <div>
+                            <h2>
+                                Tron-like Glow Effect
+                            </h2>
+                            <p>
+                                Implementing the following paper :
+                                http://http.developer.nvidia.com/GPUGems/gpugems_ch21.html
+                            </p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div style="height:210px ;">
+                        <iframe style="margin-left:50px;float:right" width="auto" height="200"
+                            src="https://www.youtube.com/embed/uhj70Mx8Ytg"></iframe>
+                        <div>
+                            <h2>
+                                Maze Generation
+                            </h2>
+                            <p>
+                                Generating a maze using the recursive backtracer algorithms.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-
-            <div class="Sections" id="SideProjects">
-
-                <div style="height:210px ;">
-                    <iframe style="margin-left:50px;float:right" width="auto" height="200"
-                        src="https://www.youtube.com/embed/WLz-BpkRlfo"></iframe>
-                    <div>
-                        <h2>
-                            Real Time Shadow mapping
-                        </h2>
-                        <p>
-                            Implementing shadow mapping
-                        </p>
-                    </div>
+                <div id="Resume" class="Sections">
+                    <p>
+                        <embed src="cv.pdf" width="800px" height="900px" type="application/pdf">
+                    </p>
                 </div>
 
-                <hr />
-                <div style="height:210px ;">
-                    <iframe style="margin-right:50px;float:left" width="auto" height="200"
-                        src="https://www.youtube.com/embed/u8t_ahQPCMA"></iframe>
+                <div class="Sections" id="AboutMe">
+                    <h2> Hello There! </h2>
+                    <p>
+                        Hi everyone and welcome to my portfolio's page. My name is Guyot Cédric. I live in France's
+                        South
+                        and I'm a developper with a passion for games and game development.
+                    </p>
+                    <p>
+                        I use my spare time to work on various projects, like my own game and game engine project.
+                        But I also like to tinker with various computer graphics problems!
+                    </p>
+                    <p>
+                        Here's some images and gif of my currents projects, you can find more in the different sections
+                        of
+                        this portfolio!
+                    </p>
                     <div>
-                        <h2>
-                            Dynamic Environment Cubemap
-                        </h2>
-                        <p>
-                            Implementing Dynamic Environment cubemap.
-                        </p>
-                        <p>
-                            We render the scene 6 times for each side of the cube, put this inside an array of 6
-                            texture (TextureCube) and send it to the shaders.
-                        </p>
+                        <a href="resources/tw.gif" target="_blank" title="MovingAround">
+                            <img width="150px" height="150px" src="resources/previewTw.jpeg">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/tttttttt.gif" target="_blank" title="EnemyAttack"
+                            description="suff">
+                            <img width="150px" height="150px" src="resources/previewt.jpeg">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/clouds.gif" target="_blank" title="Clouds"
+                            description="suff">
+                            <img width="150px" height="150px" src="resources/previewClouds.png">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/Butterflies2.gif" target="_blank"
+                            title="Butterflies" description="suff">
+                            <img width="150px" height="150px" src="resources/previewButterflies.png">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/Jump.gif" target="_blank" title="Jump"
+                            description="suff">
+                            <img width="150px" height="150px" src="resources/previewJump.png">
+                        </a>
+                        <a style="margin-left:10px ;" href="resources/stuff.gif" target="_blank" title="Reflect"
+                            description="suff">
+                            <img width="150px" height="150px" src="resources/previewReflect.png">
+                        </a>
                     </div>
-                </div>
-                <hr />
-                <div style="height:210px ;">
-                    <iframe style="margin-left:50px;float:right" width="auto" height="200"
-                        src="https://www.youtube.com/embed/KhYXsFNvR8I"></iframe>
-                    <div>
-                        <h2>
-                            Incremental Delaunay Triangulation
-                        </h2>
-                        <p>
-                            Implementation of the Incremental Delaunay Triangulation algorithm and Voronoi Diagram
-                        </p>
-                    </div>
-                </div>
-                <hr />
-                <div style="height:210px ;">
-                    <iframe style="margin-right:50px;float:left" width="auto" height="200"
-                        src="https://www.youtube.com/embed/JeRfxWaMpJE"></iframe>
-                    <div>
-                        <h2>
-                            Basic L-System Integration
-                        </h2>
-                        <p>
-                            Turtle rules :
-                            F and G mean draw a segment
-                            + : turn left
-                            - : turn right
-                            [ save position and angle
-                            ] return to the last saved position and angle
-                            X and Y just control the formula but have no effect on the drawing.
-                        </p>
-                    </div>
-                </div>
-                <hr />
-                <div style="height:210px ;">
-                    <iframe style="margin-left:50px;float:right" width="auto" height="200"
-                        src="https://www.youtube.com/embed/ndyQcM1X9Sw"></iframe>
-                    <div>
-                        <h2>
-                            Particle System
-                        </h2>
-                        <p>
-                            1 million moving particles in C++/Opengl
-                        </p>
-                    </div>
-                </div>
-                <hr />
-                <div style="height:210px ;">
-                    <iframe style="margin-right:50px;float:left" width="auto" height="200"
-                        src="https://www.youtube.com/embed/Ir-vvTKv8Gw"></iframe>
-                    <div>
-                        <h2>
-                            Tron-like Glow Effect
-                        </h2>
-                        <p>
-                            Implementing the following paper :
-                            http://http.developer.nvidia.com/GPUGems/gpugems_ch21.html
-                        </p>
-                    </div>
-                </div>
-                <hr />
-                <div style="height:210px ;">
-                    <iframe style="margin-left:50px;float:right" width="auto" height="200"
-                        src="https://www.youtube.com/embed/uhj70Mx8Ytg"></iframe>
-                    <div>
-                        <h2>
-                            Maze Generation
-                        </h2>
-                        <p>
-                            Generating a maze using the recursive backtracer algorithms.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="Resume" class="Sections">
-
-            </div>
-
-            <div class="Sections" id="AboutMe">
-                <h2> Hello There! </h2>
-                <p>
-                    Hi everyone and welcome to my portfolio's page. My name is Guyot Cédric. I live in France's South
-                    and I'm a developper with a passion for games and game development.
-                </p>
-                <p>
-                    I use my spare time to work on various projects, like my own game and game engine project.
-                    But I also like to tinker with various computer graphics problems!
-                </p>
-                <p>
-                    Here's some images and gif of my currents projects, you can find more in the different sections of
-                    this portfolio!
-                </p>
-                <div>
-                    <a href="resources/tw.gif" target="_blank" title="MovingAround">
-                        <img width="150px" height="150px" src="resources/previewTw.jpeg">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/tttttttt.gif" target="_blank" title="EnemyAttack"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewt.jpeg">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/clouds.gif" target="_blank" title="Clouds"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewClouds.png">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/Butterflies2.gif" target="_blank" title="Butterflies"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewButterflies.png">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/Jump.gif" target="_blank" title="Jump"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewJump.png">
-                    </a>
-                    <a style="margin-left:10px ;" href="resources/stuff.gif" target="_blank" title="Reflect"
-                        description="suff">
-                        <img width="150px" height="150px" src="resources/previewReflect.png">
-                    </a>
                 </div>
             </div>
 
