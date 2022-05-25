@@ -1,9 +1,387 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <script>
+        var currentSection = "AboutMe";
+        var inTransition = false;
+
+        function buttonAction(sectionName) {
+
+            if (currentSection == sectionName)
+                return;
+
+            if (inTransition)
+                return;
+
+            inTransition = true;
+
+            var section = document.getElementById(currentSection);
+            section.style.opacity = 0;
+
+            var func = function (event) {
+                section.style.display = "none";
+                document.getElementById(sectionName).style.display = "block";
+                // We need this line just to refresh the document, otherwise
+                // the opacity change won't be registered and no transition will occur
+                document.body.offsetHeight;
+                document.getElementById(sectionName).style.opacity = 1;
+                currentSection = sectionName;
+                section.removeEventListener('transitionend', func);
+
+                var func2 = function (event) {
+                    inTransition = false;
+                    console.log("hi");
+                    document.getElementById(sectionName).removeEventListener('transitionend', func2);
+                }
+
+                document.getElementById(sectionName).addEventListener('transitionend', func2);
+            };
+
+            section.addEventListener('transitionend', func);
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: white;
+        }
+
+        h1 {
+            color: blue;
+            font-family: 'Roboto', sans-serif;
+            text-align: left;
+        }
+
+        h2 {
+            color: lightskyblue;
+            font-family: 'Roboto', sans-serif;
+            text-align: left;
+        }
+
+        p,
+        li {
+            font-family: 'Roboto', sans-serif;
+            color: black;
+        }
+
+        img.previewImage {
+            border-radius: 25px;
+            max-height: 300px;
+        }
+
+        img.avatar {
+            border-radius: 50%;
+            width: 150px;
+            align-content: center;
+
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+
+        }
+
+        #background {
+            background-color: grey;
+            margin-left: 5%;
+            margin-right: 5%;
+            border-radius: 20px;
+        }
+
+        #leftPanel {
+            float: left;
+            width: 400px;
+            height: 100%;
+            margin-top: 50px;
+        }
+
+        #contentPanel {
+            float: left;
+            width: 1000px;
+        }
+
+        #profilePicture {
+            align-content: center;
+        }
+
+        div.button {
+            color: lightgray;
+            background-color: grey;
+            border-radius: 7px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            width: fit-content;
+            transition: background-color 0.3s, color 0.3s;
+
+            transition-timing-function: ease-out;
+            cursor: pointer;
+            display: inline-block;
+
+        }
+
+        div.button:hover {
+            color: white;
+            background-color: darkgrey;
+            border-radius: 7px;
+            width: fit-content;
+            padding-right: 10px;
+        }
+
+        #AboutMe {
+            opacity: 1;
+            display: block;
+        }
+
+        #PersonalProjects {
+            opacity: 0;
+            display: none;
+        }
+
+        #SideProjects {
+            opacity: 0;
+            display: none;
+        }
+
+        #Resume {
+            opacity: 0;
+            display: none;
+        }
+
+        .Sections {
+            transition: opacity 0.35s;
+        }
+    </style>
+</head>
+
 <body>
-    <h1>Hello World</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+    <div style="width: 1400px;">
+        <div id="leftPanel">
+            <img class="avatar" src="resources/moi.png ">
+            <div style="margin-left: 90px;">
+                <p style=" color: black;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 900;
+                font-size: xx-large;
+                text-align: left;
+                margin-bottom: 1px;"> Guyot Cédric
+                </p>
+                <p style=" color: grey;font-family: 'Roboto', sans-serif;
+                font-weight: 900;
+                font-size: x-large;
+                margin-bottom: 1px;
+                text-align: left;
+                margin-top: 1px;"> ProfesseurPoire</p>
+                <p style=" color: darkgrey;font-family: 'Roboto', sans-serif;
+                font-weight: 900;
+                font-size: large;
+                margin-top: 1px;
+                text-align: left;"> C++ Developer</p>
+            </div>
+
+        </div>
+
+        <div id="contentPanel">
+            <div id="toolbar">
+                <div class="button" onclick="buttonAction('AboutMe');">
+                    About Me
+                </div>
+                <div class="button" onclick="buttonAction('PersonalProjects');">
+                    Personal Projects
+                </div>
+                <div class="button" onclick="buttonAction('SideProjects');">
+                    Side Experiments
+                </div>
+                <div class="button" onclick="buttonAction('Resume');">
+                    Resume
+                </div>
+            </div>
+            <hr />
+
+
+            <div class="Sections" id="PersonalProjects">
+                <div style="height:270px ;">
+                    <div>
+                        <img style="margin-left:50px;float:right;" width="450" class="previewImage"
+                            src="resources/FrogKnight.png ">
+                        <div>
+                            <h2> FrogKnight </h2>
+                            <p>
+                                Frogknight is a colorful action-adventure game still in development in which you play an
+                                adorable frog that must free the kingdom from a terrible curse.
+                            </p>
+                            <p>
+                                The game is being built on top of my own game engine (Corgi Engine) and will feature
+                                a whole world for the player to explore, filled with dungeons, treasures and colorful
+                                characters to interact with!
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <a href="resources/tw.gif" target="_blank" title="MovingAround" description="suff">
+                        <img width="150px" height="150px" src="resources/previewTw.jpeg">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/tttttttt.gif" target="_blank" title="EnemyAttack"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewt.jpeg">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/clouds.gif" target="_blank" title="Clouds"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewClouds.png">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/Butterflies2.gif" target="_blank" title="Butterflies"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewButterflies.png">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/Jump.gif" target="_blank" title="Jump"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewJump.png">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/stuff.gif" target="_blank" title="Reflect"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewReflect.png">
+                    </a>
+                </div>
+                <hr />
+                <div style="height: 300px;">
+                    <img style="float:left; margin-right: 50px;" class="previewImage" src="resources/gameEngine.png ">
+                    <div>
+                        <h2> Corgi Game Engine </h2>
+                        <p> Corgi is a C++/OpenGL game engine I'm currently working on to build my other projects. It
+                            focuses on 2D features but still support 3D operations or meshes.
+                        </p>
+                        <p>
+                            You can find the source code on my github <a
+                                href="https://github.com/ProfesseurPoire/corgi">repository</a>
+                        </p>
+                        <p>
+                            Features :
+                        </p>
+                        <ul>
+                            <li>
+                                2D Support (Sprite Animation, Tilemapping, Sorting etc)
+                            </li>
+                            <li>
+                                Basics Physics (2D collisions detection)
+                            </li>
+                            <li>
+                                UI System (Fonts, Widgets)
+                            </li>
+                            <li>
+                                CrossPlatform (Linux/Windows/MacOS)
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <hr />
+                <div>
+                    <img width="450" style="margin-left:50px;float:right" class="previewImage"
+                        src="resources/Editor.png ">
+                    <div>
+                        <h2> FrogKnight Game Editor </h3>
+                            <p>
+                                I'm working on a game editor to make it easier to create levels for my game FrogKnight.
+                                The Editor is made using C++ and the GUI features of my engine (corgi engine).
+                            </p>
+                            <p>
+                                So far, the Editor allow tilemapping edition and the ability to run the game while
+                                editing the level in real time
+                            </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="Sections" id="SideProjects">
+
+                <div style="height:310px ;">
+                    <iframe style="margin-left:50px;float:right" width="auto" height="300"
+                        src="https://www.youtube.com/embed/WLz-BpkRlfo"></iframe>
+                    <div>
+                        <h2>
+                            Real Time Shadow mapping
+                        </h2>
+                        <p>
+                            Implementing shadow mapping
+                        </p>
+                    </div>
+
+                </div>
+
+                <hr />
+                <div>
+                    <iframe style="margin-right:50px;float:left" width="auto" height="300"
+                        src="https://www.youtube.com/embed/u8t_ahQPCMA"></iframe>
+                    <div>
+                        <h2>
+                            Dynamic Environment Cubemap
+                        </h2>
+                        <p>
+                            Implementing Dynamic Environment cubemap
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="Resume" class="Sections">
+
+            </div>
+
+            <div class="Sections" id="AboutMe">
+                <h2> Hello There! </h2>
+                <p>
+                    Hi everyone and welcome to my portfolio's page. My name is Guyot Cédric. I live in France's South
+                    and I'm a developper with a passion for games and game development.
+                </p>
+                <p>
+                    I use my spare time to work on various projects, like my own game and game engine project.
+                    But I also like to tinker with various computer graphics problems!
+                </p>
+                <p>
+                    Here's some images and gif of my currents projects, you can find more in the different sections of
+                    this portfolio!
+                </p>
+                <div>
+                    <a href="resources/tw.gif" target="_blank" title="MovingAround">
+                        <img width="150px" height="150px" src="resources/previewTw.jpeg">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/tttttttt.gif" target="_blank" title="EnemyAttack"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewt.jpeg">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/clouds.gif" target="_blank" title="Clouds"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewClouds.png">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/Butterflies2.gif" target="_blank" title="Butterflies"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewButterflies.png">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/Jump.gif" target="_blank" title="Jump"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewJump.png">
+                    </a>
+                    <a style="margin-left:10px ;" href="resources/stuff.gif" target="_blank" title="Reflect"
+                        description="suff">
+                        <img width="150px" height="150px" src="resources/previewReflect.png">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>
